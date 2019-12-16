@@ -6,7 +6,6 @@ import json
 def return_nearest_foodbanks_to_given_location (location_lat_long, number_of_foodbanks_to_return):
 		list_of_foodbanks_and_distance_away_from_location = [] # Return list will contain foodbank name and distance away, in ascending order of distance.
 		for foodbank in list_of_dictionaries_containing_information_on_all_foodbanks:
-			print(foodbank)
 			if 'error' in list_of_dictionaries_containing_information_on_all_foodbanks[foodbank]:
 				continue # Skip the foodbank if it has an error
 			else:
