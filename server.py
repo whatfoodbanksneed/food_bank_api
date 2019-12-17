@@ -2,6 +2,7 @@ import web
 import ast
 from geopy.distance import geodesic
 import json
+import html
 
 def return_nearest_foodbanks_to_given_location (location_lat_long, number_of_foodbanks_to_return):
 		list_of_foodbanks_and_distance_away_from_location = [] # Return list will contain foodbank name and distance away, in ascending order of distance.
@@ -25,7 +26,8 @@ def return_relevant_information_for_given_list_of_foodbanks(list_of_foodbanks_to
 		if 'error' in list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]:
 			continue # Skip the foodbank if it has an error
 		else:
-			dictionary_to_return[nearby_foodbank[0]] = {"Distance" : str(nearby_foodbank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["address"],  "Website" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["website"].replace("\\", ""),  "Items needed" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["items_needed"], }
+			tidy_foodbank_name =  html.unescape(nearby_foodbank[0])
+			dictionary_to_return[tidy_foodbank_name] = {"Distance" : str(nearby_foodbank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["address"],  "Website" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["website"].replace("\\", ""),  "Items needed" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["items_needed"], }
 	return json.dumps(dictionary_to_return)
 
 def show_nearby_foodbanks_and_items_needed (location_tuple, number_of_foodbanks_to_show):
