@@ -7,21 +7,27 @@ A script to iterate through Trussell Trust foodbanks and find out what items the
 
 Start by installing the dependencies:
 
-```pip install beautifulsoup4
+```
+pip install beautifulsoup4
 pip install lxml
 pip install requests
 pip install geopy
-pip install web.py```
+pip install web.py
+```
 
 For a fresh file of foodbank information you should run:
-```python get_foodbank_details_and_write_to_file.py```
+```
+python get_foodbank_details_and_write_to_file.py
+```
 
 That will create a new, current version of foodbank_data_storage.txt
 
 That'll take a couple of hours, so you might prefer to just use the foodbank_data_storage.txt that comes in this repo when you're getting started. It'll become increasingly out-of-date, but you can use it to make sure you've set things up correctly.
 
 Then run the server:
-```python server.py```
+```
+python server.py
+```
 
 
 ## API Endpoints
