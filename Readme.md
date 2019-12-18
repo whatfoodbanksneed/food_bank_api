@@ -1,4 +1,4 @@
-# Foodbank
+# Foodbank API
 
 A script to iterate through Trussell Trust foodbanks and find out what items they need, and a simple web server to let people query this and find out what items are needed by nearby foodbanks.
 
