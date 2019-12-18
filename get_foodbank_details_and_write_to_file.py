@@ -36,17 +36,14 @@ trimmed_response_string = ast.literal_eval(trimmed_response_string) # Interrogat
 number_of_foodbanks = 0 # Including nonconforming ones
 number_of_nonconforming_foodbanks = 0 # A.K.A. "poorly" or "non-standard" food banks. Their website doesn't work, or are different to the usual model.
 
-# For now ignore foodbank centres, but later on i could add them in as a list within the list here. Not MVP
+# For MVP, ignore foodbank centres. 
+## TODO Add foodbank centres, as there are quite a few.
 
 # Create a dictionary, with each foodbank name as a key to its own dictionary object
 # {address, latitude, longitude, website, donate_food_url, food needed (only populated if we successfully got this information), error (only populated if there was a problem getting the information)}
 dictionary_of_foodbanks_and_information = {}
 
-#print(show_items_needed_by_foodbank("www.sunderland.foodbank.org.uk/give-help/donate-food/"))
-
 for foodbank in trimmed_response_string:
-	#if (foodbank['foodbank_information']['name'][0] == "B"): # Stop at the start of the [letter variable]s. For testing purposes
-	#	break
 	number_of_foodbanks += 1
 	print(foodbank['foodbank_information']['name'])
 	if (not foodbank['foodbank_information']['website']): # If this foodbank doesn't have a website, add it, but without website or items needed info
@@ -77,8 +74,6 @@ for foodbank_name in dictionary_of_foodbanks_and_information:
 	print(foodbank_name)
 	print(dictionary_of_foodbanks_and_information[foodbank_name])
 	print("")
-
-information_to_write = {"address" : "some address", "latitude" : "some latitude", "longitude" : "some latitude", "items_needed" : ["item1", "item2"]}
 
 with open("foodbank_data_storage.txt", "w") as data_storage_file:
 	data_storage_file.write(str(dictionary_of_foodbanks_and_information))
