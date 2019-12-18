@@ -2,7 +2,7 @@
 
 A script to iterate through Trussell Trust foodbanks and find out what items they need, and a simple web server to let people query this and find out what items are needed by nearby foodbanks.
 
-Read this blog pots on the [background to this API](https://www.martinlugton.com/build-a-food-bank-api-part-1/)
+Read this blog post on the [background to this API](https://www.martinlugton.com/build-a-food-bank-api-part-1/)
 
 
 ## Getting Started
