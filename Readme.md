@@ -1,58 +1,8 @@
 # Foodbank
 
-One Paragraph of project description goes here
+A script to iterate through Trussell Trust foodbanks and find out what items they need, and a simple web server to let people query this and find out what items are needed by nearby foodbanks.
 
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-
-
-
-
-
 
 pip install beautifulsoup4 
 (the module we use to grab a webpage's HTML and do stuff with it)
@@ -69,7 +19,6 @@ pip install geopy
 pip install web.py
 (the module we use for the web server)
 
-
 For a fresh file of foodbank information you should run:
 python get_foodbank_details_and_write_to_file.py
 
@@ -81,4 +30,15 @@ That'll take a couple of hours, so you might prefer to just use the foodbank_dat
 Then run the server:
 python server.py
 
-N.B. tabs are tabs, not 4 spaces. Sorry / not sorry.
+
+## API Endpoints
+
+The API accepts GET requests. There are two endpoints, shown below with an example request.
+
+http://127.0.0.1:8080/nearest_foodbanks?latitude=52.629958&longitude=1.298408&number_of_foodbanks_to_show=5
+
+http://127.0.0.1:8080/individual_foodbank_information?foodbank_name=Harrow%20Foodbank
+
+## Running the tests
+
+There aren't any unit or integration tests yet. Pull requests will be reviewed!
