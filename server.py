@@ -4,6 +4,14 @@ from geopy.distance import geodesic
 import json
 import html
 
+from cheroot.server import HTTPServer
+from cheroot.ssl.builtin import BuiltinSSLAdapter
+HTTPServer.ssl_adapter = BuiltinSSLAdapter(
+        certificate='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/fullchain.pem',
+	private_key='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/privkey.pem'
+	)
+
+
 def return_nearest_foodbanks_to_given_location (location_lat_long, number_of_foodbanks_to_return):
 		list_of_foodbanks_and_distance_away_from_location = [] # Return list will contain foodbank name and distance away, in ascending order of distance.
 		for foodbank in list_of_dictionaries_containing_information_on_all_foodbanks:
@@ -69,7 +77,7 @@ class nearest_foodbanks:
 		except:
 			return("Please make a GET request to this endpoint with latitude, longitude, and a 'number_of_foodbanks_to_show' integer")
 
-with open("foodbank_data_storage.txt", "r") as data_storage_file:
+with open("/root/git/foodbank_api/foodbank_data_storage.txt", "r") as data_storage_file:
 		list_of_dictionaries_containing_information_on_all_foodbanks = ast.literal_eval(data_storage_file.readline())
 		print("Information loaded from file\n")
 		
