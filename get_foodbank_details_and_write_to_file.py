@@ -98,7 +98,8 @@ for foodbank in trimmed_response_string:
 		#print(dictionary_of_foodbanks_and_information[foodbank['foodbank_information']['name']]['foodbank_centres'])
 	else:
 		dictionary_of_foodbanks_and_information[foodbank['foodbank_information']['name']]['foodbank_centres'] =  False # Record that this foodbank does not have child foodbank centres
-	time.sleep(1) # Avoid hammering the server too aggressively.
+	time.sleep(10) # Avoid hammering the server too aggressively.
+
 	
 print("Finished iterating through the list of foodbanks")
 print("Number of foodbanks in total: " + str(number_of_foodbanks))
