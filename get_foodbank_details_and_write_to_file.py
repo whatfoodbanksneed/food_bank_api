@@ -41,8 +41,8 @@ number_of_nonconforming_foodbanks = 0 # A.K.A. "poorly" or "non-standard" food b
 dictionary_of_foodbanks_and_information = {}
 
 for foodbank in trimmed_response_string:
-	if (foodbank['foodbank_information']['name'][0] == "B"): ## these 2 lines just for debugging
-		break
+	#if (foodbank['foodbank_information']['name'][0] == "B"): ## We work through foodbanks alphabetically. Stop at the start of the given letter. For debugging
+	#	break
 	number_of_foodbanks += 1
 	print(foodbank['foodbank_information']['name'])
 	if (not foodbank['foodbank_information']['website']): # If this foodbank doesn't have a website, add it, but without website or items needed info
