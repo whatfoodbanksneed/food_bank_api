@@ -33,10 +33,9 @@ def return_relevant_information_for_given_list_of_foodbanks(list_of_foodbanks_to
 	for nearby_foodbank in list_of_foodbanks_to_print: # Add some information before returning
 		if 'error' in list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]:
 			continue # Skip the foodbank if it has an error 
-			## TODO: For places without a website, return a phone number and suggest giving them a ring? Error will be "No website given by master list"
 		else:
 			tidy_foodbank_name =  html.unescape(nearby_foodbank[0])
-			dictionary_to_return[tidy_foodbank_name] = {"Distance" : str(nearby_foodbank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["address"],  "Website" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["website"].replace("\\", ""),  "Items needed" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["items_needed"], }
+			dictionary_to_return[tidy_foodbank_name] = {"Distance" : str(nearby_foodbank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["address"], "Latitude" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["latitude"], "Longitude" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["longitude"], "Website" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["website"].replace("\\", ""), "Items needed" : list_of_dictionaries_containing_information_on_all_foodbanks[nearby_foodbank[0]]["items_needed"], }
 	return json.dumps(dictionary_to_return)
 
 def show_nearby_foodbanks_and_items_needed (location_tuple, number_of_foodbanks_to_show):
