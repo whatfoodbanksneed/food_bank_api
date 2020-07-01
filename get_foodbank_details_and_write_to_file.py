@@ -63,11 +63,11 @@ for food_bank in trimmed_response_string:
 				dictionary_of_food_banks_and_information[food_bank['foodbank_information']['name']] = {"address" : food_bank['foodbank_information']['geolocation']['address'], "latitude" : food_bank['foodbank_information']['geolocation']['lat'], "longitude" : food_bank['foodbank_information']['geolocation']['lng'], "website" : food_bank['foodbank_information']['website'], "error" : items_needed_by_this_food_bank, "location_type" : "food_bank"} # Don't populate items needed as we don't know what they are.
 		if type(items_needed_by_this_food_bank) == list:
 			dictionary_of_food_banks_and_information[food_bank['foodbank_information']['name']] = {"address" : food_bank['foodbank_information']['geolocation']['address'], "latitude" : food_bank['foodbank_information']['geolocation']['lat'], "longitude" : food_bank['foodbank_information']['geolocation']['lng'], "website" : food_bank['foodbank_information']['website'], "items_needed" : items_needed_by_this_food_bank, "location_type" : "food_bank"} # Add this food bank's information to the dictionary of food banks, as a dictionary itself
-	if (food_bank['food_bank_centre'] != False): # If the food bank has child food bank centres
+	if (food_bank['foodbank_centre'] != False): # If the food bank has child food bank centres
 		# It looks like items needed and website are the same as the overall food bank.
 		# Its name, telephone number, opening times, and various address values, are specific
 		dictionary_of_food_banks_and_information[food_bank['foodbank_information']['name']]['food_bank_centres'] =  [] # Initialise empty list, to contain names of child food bank centres
-		for food_bank_centre in food_bank['food_bank_centre']:
+		for food_bank_centre in food_bank['foodbank_centre']:
 			if (('foodbank_name' in food_bank_centre) and ('address' in food_bank_centre['centre_geolocation']) and ('lat' in food_bank_centre['centre_geolocation']) and ('lng' in food_bank_centre['centre_geolocation'])): # Check that all the expected values are present for this food bank centre
 				if type(items_needed_by_this_food_bank) == str: # As above. If a food bank centre's child food bank has an error or no website, store it differently.
 					number_of_nonconforming_food_banks += 1			
