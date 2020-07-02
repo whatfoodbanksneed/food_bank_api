@@ -4,12 +4,12 @@ from geopy.distance import geodesic
 import json
 import html
 
-# from cheroot.server import HTTPServer
-# from cheroot.ssl.builtin import BuiltinSSLAdapter
-# HTTPServer.ssl_adapter = BuiltinSSLAdapter(
-        # certificate='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/fullchain.pem',
-	# private_key='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/privkey.pem'
-	# )
+from cheroot.server import HTTPServer
+from cheroot.ssl.builtin import BuiltinSSLAdapter
+HTTPServer.ssl_adapter = BuiltinSSLAdapter(
+        certificate='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/fullchain.pem',
+	private_key='/etc/letsencrypt/live/whatfoodbanksneed.org.uk/privkey.pem'
+	)
 
 
 def return_nearest_food_banks_to_given_location (location_lat_long, number_of_food_banks_to_return):
@@ -52,7 +52,9 @@ def return_items_needed_by_given_food_bank (name_of_food_bank): # Give a food ba
 urls = (
 	'/', 'index',
 	'/individual-food-bank-information', 'individual_food_bank_information',
-	'/nearest-food-banks', 'nearest_food_banks'
+	'/individual-food-bank-information/', 'individual_food_bank_information',
+	'/nearest-food-banks', 'nearest_food_banks',
+	'/nearest-food-banks/', 'nearest_food_banks'
 )
 
 class index:
