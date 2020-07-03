@@ -29,14 +29,14 @@ def return_second_element (input_list): # Return the second element of an input 
 	return(input_list[1])
 
 def return_relevant_information_for_given_list_of_food_banks(list_of_food_banks_to_print):
-	dictionary_to_return = {}
+	list_to_return = []
 	for nearby_food_bank in list_of_food_banks_to_print: # Add some information before returning
 		if 'error' in list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]:
 			continue # Skip the food bank if it has an error 
 		else:
 			tidy_food_bank_name =  html.unescape(nearby_food_bank[0])
-			dictionary_to_return[tidy_food_bank_name] = {"Distance" : str(nearby_food_bank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["address"], "Latitude" : float(list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["latitude"]), "Longitude" : float(list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["longitude"]), "Website" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["website"].replace("\\", ""), "Items needed" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["items_needed"], }
-	return json.dumps(dictionary_to_return)
+			list_to_return.append({"Name" : tidy_food_bank_name, "Distance" : str(nearby_food_bank[1]) + " miles", "Address" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["address"], "Latitude" : float(list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["latitude"]), "Longitude" : float(list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["longitude"]), "Website" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["website"].replace("\\", ""), "Items needed" : list_of_dictionaries_containing_information_on_all_food_banks[nearby_food_bank[0]]["items_needed"]})
+	return json.dumps(list_to_return)
 
 def show_nearby_food_banks_and_items_needed (location_tuple, number_of_food_banks_to_show):
 	list_of_nearby_food_banks = return_nearest_food_banks_to_given_location(location_tuple, number_of_food_banks_to_show)
