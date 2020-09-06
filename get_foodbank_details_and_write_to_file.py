@@ -26,7 +26,9 @@ response = requests.get("https://www.trusselltrust.org/get-help/find-a-foodbank/
 if ((response.status_code == 200) or (response.status_code == 304)):
     print('Successful response from server')
 else:
-	print("Bad response from server")
+	print("Bad response from server:")
+	print(response.status_code)
+	raise SystemExit
 print("")
 
 trimmed_response_string = response.text[2:-2] # response.content would be in bytes. response.text gives a string. Trim the top and tail, to just give the list.
